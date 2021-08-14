@@ -1,0 +1,68 @@
+package com.alkesh.scoreboard.presentation.screens.dashboard.activity
+
+import android.content.Intent
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
+import com.alkesh.scoreboard.R
+import com.alkesh.scoreboard.common.base.activity.AppBaseActivity
+import com.alkesh.scoreboard.common.models.dto.GameResultModel
+import com.alkesh.scoreboard.presentation.screens.dashboard.adapter.GameResultAdapter
+import com.alkesh.scoreboard.presentation.screens.dashboard.listener.OnResultSelected
+import com.alkesh.scoreboard.presentation.screens.dashboard.viewModel.DashboardViewModel
+import com.alkesh.scoreboard.presentation.screens.score.activity.ResultDetailActivity
+import com.alkesh.scoreboard.presentation.screens.score.constant.ResultDetailConstant
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_dashboard.*
+import kotlinx.android.synthetic.main.layout_toolbar.*
+
+@AndroidEntryPoint
+class DashboardActivity : AppBaseActivity() {
+    private val viewModel: DashboardViewModel by viewModels()
+    override fun init() {
+        toolbar.setup(this, getString(R.string.activity_dashboard_title), false)
+
+    }
+
+    override fun setEvents() {
+        viewModel.listResults.observe(this, Observer {
+            if (!it.isEmpty()) {
+                populateList(it)
+            }
+
+        })
+        viewModel.isLoading.observe(this, Observer {
+            it?.let {
+                if (it) {
+                    showLoadingDialog()
+                } else {
+                    hideLoadingDialog()
+                }
+            }
+        })
+        viewModel.showMessage.observe(this, Observer {
+            it?.let {
+                showMessage(it)
+            }
+        })
+    }
+
+    override fun setObservers() {
+    }
+
+    override fun getLayoutResId(): Int {
+        return R.layout.activity_dashboard
+    }
+
+    private fun populateList(list: ArrayList<GameResultModel>) {
+        val adapter = GameResultAdapter(this, list, onResultSelected)
+        bindVerticalAdapterWithRecyclerview(recyclerView, adapter)
+    }
+
+    private val onResultSelected = object : OnResultSelected {
+        override fun onClicked(model: GameResultModel) {
+            val intent = Intent(this@DashboardActivity, ResultDetailActivity::class.java)
+            intent.putExtra(ResultDetailConstant.Bundle_Result_Model, model)
+            startAnotherActivity(intent)
+        }
+    }
+}

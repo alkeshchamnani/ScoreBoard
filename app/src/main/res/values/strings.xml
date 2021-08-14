@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">ScoreBoard</string>
+    <!--DashboardActivity!-->
+    <string name="activity_dashboard_title">Dashboard</string>
+
+
+    <!--AdvertisementDetailActivity!-->
+    <string name="activity_result_detail_title">Detail</string>
+    <string name="activity_result_date">Date :</string>
+    <string name="activity_result_description_dummy">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s</string>
+
+
+    <!--LoadingDialog!-->
+    <string name="dialog_loading_please_wait">Please Wait</string>
 </resources>
