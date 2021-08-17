@@ -10,6 +10,6 @@ Kotlins Coroutines were used asynchronous programming. <br/>
 Hilt is for Injecting Repositories into viewModel<br/>
 Retrofit was used for Networking along with OkHttp
 
-
-
+# Motive
+The purpose of this example is to share knowledge about (HILT)
 
