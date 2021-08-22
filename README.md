@@ -9,9 +9,9 @@ In case of any exception such as No internet connect. data will be fetched from 
 
 # Models Related
 In this project there are 3 objects<br/>
-1, DTO -> These are used when data source is API
-2, DBModel -> These are used when data source is Databse
-3, UIModel -> This is final UI Model with is passed to viewModel. Data from any source is converted into UIModel by using Mapper.
+1, DTO -> These are used when data source is API<br/>
+2, DBModel -> These are used when data source is Databse<br/>
+3, UIModel -> This is final UI Model with is passed to viewModel. Data from any source is converted into UIModel by using Mapper.<br/>
 
 
 
@@ -24,8 +24,8 @@ Android's Architecture Components components were used to to acheive MVVM e.g Li
 Kotlins Coroutines were used asynchronous programming. <br/>
 
 Hilt is for Injecting Repositories into viewModel<br/>
-Retrofit was used for Networking along with OkHttp
+Retrofit was used for Networking along with OkHttp<br/>
 
 # Motive
-The purpose of this example is to share knowledge about (HILT)
+The purpose of this example is to share knowledge about (HILT)<br/>
 
