@@ -12,6 +12,7 @@ import com.alkesh.scoreboard.common.models.dto.GameResultModel
 import com.alkesh.scoreboard.common.util.DateAndTimeUtil
 import com.alkesh.scoreboard.common.util.DateFormats
 import com.alkesh.scoreboard.common.util.ImageUtil
+import com.alkesh.scoreboard.common.util.NameUtil
 import com.alkesh.scoreboard.presentation.screens.dashboard.listener.OnResultSelected
 import kotlinx.android.synthetic.main.cell_list_game_result.view.*
 
@@ -42,10 +43,10 @@ class GameResultAdapter(
             holder.tvTeamBScore.text = arrayScore[1]
         }
         model.teamA?.let {
-            holder.tvTeamAName.text = getShortName(it)
+            holder.tvTeamAName.text = NameUtil.getShortName(it)
         }
         model.teamB?.let {
-            holder.tvTeamBName.text = getShortName(it)
+            holder.tvTeamBName.text = NameUtil.getShortName(it)
         }
         model.linkA?.let {
             ImageUtil.loadImage(holder.ivTeamAFlag.context, holder.ivTeamAFlag, it)
@@ -84,12 +85,5 @@ class GameResultAdapter(
         val tvTime: TextView = view.tvTime
     }
 
-    private fun getShortName(fullName: String): String {
-        var shortName = ""
-        val words = fullName.split(" ")
-        for (word in words) {
-            shortName = shortName + "" + word[0]
-        }
-        return shortName
-    }
+
 }

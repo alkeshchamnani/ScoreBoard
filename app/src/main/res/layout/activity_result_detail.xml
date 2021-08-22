@@ -17,59 +17,7 @@
         android:layout_below="@+id/app_bar"
         android:fillViewport="true">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp">
-
-            <ImageView
-                android:id="@+id/ivBanner"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginBottom="10dp"
-                android:scaleType="centerCrop" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/ivBanner"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp">
-
-                    <TextView
-                        android:id="@+id/tvDateLable"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/activity_result_date"
-                        android:textColor="@color/textViewColor4"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:id="@+id/tvDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_toEndOf="@+id/tvDateLable"
-                        android:textColor="@color/textViewColor1"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tvDate"
-                        android:text="@string/activity_result_description_dummy"
-                        android:textColor="@color/textViewColor3"
-                        android:textSize="18dp" />
-
-                </RelativeLayout>
-
-            </LinearLayout>
-        </RelativeLayout>
+        <include layout="@layout/cell_list_game_result" />
 
     </ScrollView>
 

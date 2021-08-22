@@ -23,6 +23,7 @@ class SplashActivity : AppBaseActivity() {
         viewModel.navigateToDashboard.observe(this, Observer {
             if (it) {
                 startActivity(Intent(this, DashboardActivity::class.java))
+                finish()
             }
         })
 

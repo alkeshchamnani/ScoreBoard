@@ -1,6 +1,7 @@
 package com.alkesh.scoreboard.presentation.screens.dashboard.activity
 
 import android.content.Intent
+import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.alkesh.scoreboard.R
@@ -24,8 +25,14 @@ class DashboardActivity : AppBaseActivity() {
     }
 
     override fun setEvents() {
+        swipeRefresh.setOnRefreshListener {
+            viewModel.getData()
+        }
+    }
+
+    override fun setObservers() {
         viewModel.listResults.observe(this, Observer {
-            if (!it.isEmpty()) {
+            if (it.isNotEmpty()) {
                 populateList(it)
             }
 
@@ -33,9 +40,13 @@ class DashboardActivity : AppBaseActivity() {
         viewModel.isLoading.observe(this, Observer {
             it?.let {
                 if (it) {
-                    showLoadingDialog()
+                    //showLoadingDialog()
+                    progressBar.visibility = View.VISIBLE
+                    swipeRefresh.isRefreshing = true
                 } else {
-                    hideLoadingDialog()
+                    //hideLoadingDialog()
+                    progressBar.visibility = View.GONE
+                    swipeRefresh.isRefreshing = false
                 }
             }
         })
@@ -44,9 +55,6 @@ class DashboardActivity : AppBaseActivity() {
                 showMessage(it)
             }
         })
-    }
-
-    override fun setObservers() {
     }
 
     override fun getLayoutResId(): Int {

@@ -16,7 +16,7 @@ class DashboardViewModel @Inject constructor(private val gameResultsRepository: 
     val listResults = MutableLiveData(ArrayList<GameResultModel>())
 
     init {
-        getResultsFromA()
+        getData()
     }
 
     private fun getResultsFromA() {
@@ -29,7 +29,7 @@ class DashboardViewModel @Inject constructor(private val gameResultsRepository: 
             result?.let {
                 if (it.successful) {
                     list.addAll(result.listScores)
-                    getResultsFromB()
+                    listResults.value = list
                 } else {
                     showMessage.value = result.message
                 }
@@ -52,5 +52,11 @@ class DashboardViewModel @Inject constructor(private val gameResultsRepository: 
                 }
             }
         }
+    }
+
+    fun getData() {
+        list.clear()
+        getResultsFromA()
+        getResultsFromB()
     }
 }
