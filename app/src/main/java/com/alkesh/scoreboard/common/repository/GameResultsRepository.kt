@@ -2,18 +2,21 @@ package com.alkesh.scoreboard.common.repository
 
 import com.alkesh.scoreboard.common.base.repository.BaseRepository
 import com.alkesh.scoreboard.common.uiModels.UIGameResultModel
+import com.alkesh.scoreboard.dataSources.database.dao.DaoGameResult
+import com.alkesh.scoreboard.dataSources.mapper.GameResultsMapper
+import com.alkesh.scoreboard.dataSources.network.services.GameResultsService
 import javax.inject.Inject
 
 
 class GameResultsRepository @Inject constructor(
-   // private val gameResultsService: GameResultsService,
-   // private val daoGameResult: DaoGameResult,
-    //private val gameResultsMapper: GameResultsMapper
+    private val gameResultsService: GameResultsService,
+    private val daoGameResult: DaoGameResult,
+    private val gameResultsMapper: GameResultsMapper
 ) : BaseRepository() {
 
     suspend fun getResultFromA(): ArrayList<UIGameResultModel>? {
         val list = ArrayList<UIGameResultModel>()
-        /*try {
+        try {
             val response = gameResultsService.getResultsFromA()
             if (response.isSuccessful) {
                 daoGameResult.deleteAll(APISource.APIA.value)
@@ -30,29 +33,17 @@ class GameResultsRepository @Inject constructor(
                     }
                 }
             } else {
-                val listDBModels = daoGameResult.getAll(APISource.APIA.value)
-                for (dbModel in listDBModels) {
-                    val uiModel = gameResultsMapper.convertDbModelIntoUIModel(dbModel)
-                    uiModel?.let {
-                        list.add(it)
-                    }
-                }
+                list.addAll(getDBModelsAndThenConvertIntoUIModels(APISource.APIA.value))
             }
         } catch (exp: Exception) {
-            val listDBModels = daoGameResult.getAll(APISource.APIA.value)
-            for (dbModel in listDBModels) {
-                val uiModel = gameResultsMapper.convertDbModelIntoUIModel(dbModel)
-                uiModel?.let {
-                    list.add(it)
-                }
-            }
-        }*/
+            list.addAll(getDBModelsAndThenConvertIntoUIModels(APISource.APIA.value))
+        }
         return list
     }
 
     suspend fun getResultFromB(): ArrayList<UIGameResultModel>? {
         val list = ArrayList<UIGameResultModel>()
-       /* try {
+        try {
             val response = gameResultsService.getResultsFromB()
             if (response.isSuccessful) {
                 daoGameResult.deleteAll(APISource.APIB.value)
@@ -69,29 +60,29 @@ class GameResultsRepository @Inject constructor(
                     }
                 }
             } else {
-                val listDBModels = daoGameResult.getAll(APISource.APIB.value)
-                for (dbModel in listDBModels) {
-                    val uiModel = gameResultsMapper.convertDbModelIntoUIModel(dbModel)
-                    uiModel?.let {
-                        list.add(it)
-                    }
-                }
+                list.addAll(getDBModelsAndThenConvertIntoUIModels(APISource.APIB.value))
             }
         } catch (exp: Exception) {
-            val listDBModels = daoGameResult.getAll(APISource.APIB.value)
-            for (dbModel in listDBModels) {
-                val uiModel = gameResultsMapper.convertDbModelIntoUIModel(dbModel)
-                uiModel?.let {
-                    list.add(it)
-                }
-            }
-        }*/
+            list.addAll(getDBModelsAndThenConvertIntoUIModels(APISource.APIB.value))
+        }
         return list
     }
 
-
+    private suspend fun getDBModelsAndThenConvertIntoUIModels(apiSource: String): ArrayList<UIGameResultModel> {
+        val list = ArrayList<UIGameResultModel>()
+        val listDBModels = daoGameResult.getAll(APISource.APIA.value)
+        for (dbModel in listDBModels) {
+            val uiModel = gameResultsMapper.convertDbModelIntoUIModel(dbModel)
+            uiModel?.let {
+                list.add(it)
+            }
+        }
+        return list
+    }
+    
     enum class APISource(var value: String) {
         APIA("APIA"),
         APIB("APIB")
     }
 }
+

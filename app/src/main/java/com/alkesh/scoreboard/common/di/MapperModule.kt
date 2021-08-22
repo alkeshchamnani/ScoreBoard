@@ -10,9 +10,9 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object MapperModule {
-   /* @Singleton
+    @Singleton
     @Provides
     fun provideGameResultMapper(): GameResultsMapper {
         return GameResultsMapper()
-    }*/
+    }
 }

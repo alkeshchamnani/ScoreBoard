@@ -49,10 +49,10 @@ class GameResultAdapter(
             holder.tvTeamBName.text = NameUtil.getShortName(it)
         }
         model.linkA?.let {
-          //  ImageUtil.loadImage(holder.ivTeamAFlag, it)
+            ImageUtil.loadImage(holder.ivTeamAFlag.context,holder.ivTeamAFlag, it)
         }
         model.linkB?.let {
-           // ImageUtil.loadImage(holder.ivTeamBFlag, it)
+            ImageUtil.loadImage(holder.ivTeamAFlag.context,holder.ivTeamBFlag, it)
         }
         model.date?.let {
             try {

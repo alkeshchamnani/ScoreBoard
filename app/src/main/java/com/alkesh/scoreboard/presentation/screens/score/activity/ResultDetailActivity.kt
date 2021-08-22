@@ -77,10 +77,10 @@ class ResultDetailActivity : AppBaseActivity() {
             tvTeamBName.text = NameUtil.getShortName(it)
         }
         uiGameResultModel.linkA?.let {
-           // ImageUtil.loadImage(ivTeamAFlag, it)
+            ImageUtil.loadImage(ivTeamAFlag.context, ivTeamAFlag, it)
         }
         uiGameResultModel.linkB?.let {
-           // ImageUtil.loadImage(ivTeamBFlag, it)
+            ImageUtil.loadImage(ivTeamAFlag.context, ivTeamBFlag, it)
         }
         uiGameResultModel.date?.let {
             try {
