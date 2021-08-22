@@ -1,6 +1,6 @@
-package com.alkesh.scoreboard.core.network.models.response;
+package com.alkesh.scoreboard.dataSources.network.models.response;
 
-import com.alkesh.scoreboard.core.network.models.dto.GameResultDTO;
+import com.alkesh.scoreboard.dataSources.network.models.dto.GameResultDTO;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

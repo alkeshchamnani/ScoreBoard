@@ -1,6 +1,6 @@
 package com.alkesh.scoreboard.common.di
 
-import com.alkesh.scoreboard.core.mapper.GameResultsMapper
+import com.alkesh.scoreboard.dataSources.mapper.GameResultsMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,9 +10,9 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object MapperModule {
-    @Singleton
+   /* @Singleton
     @Provides
     fun provideGameResultMapper(): GameResultsMapper {
         return GameResultsMapper()
-    }
+    }*/
 }

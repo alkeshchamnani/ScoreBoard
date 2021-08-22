@@ -1,8 +1,8 @@
-package com.alkesh.scoreboard.core.network.retrofitService
+package com.alkesh.scoreboard.dataSources.network.retrofitService
 
 import android.content.Context
 import com.alkesh.scoreboard.common.constant.AppConstants
-import com.alkesh.scoreboard.core.network.interceptors.NetworkConnectionInterceptor
+import com.alkesh.scoreboard.dataSources.network.interceptors.NetworkConnectionInterceptor
 import com.google.gson.GsonBuilder
 import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.OkHttpClient

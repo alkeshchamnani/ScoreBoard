@@ -1,7 +1,7 @@
 package com.alkesh.scoreboard.common.di
 
-import com.alkesh.scoreboard.core.network.retrofitService.RetrofitService
-import com.alkesh.scoreboard.core.network.services.GameResultsService
+import com.alkesh.scoreboard.dataSources.network.retrofitService.RetrofitService
+import com.alkesh.scoreboard.dataSources.network.services.GameResultsService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

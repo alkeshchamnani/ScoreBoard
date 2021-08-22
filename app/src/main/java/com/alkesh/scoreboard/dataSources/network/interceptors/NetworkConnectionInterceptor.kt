@@ -1,8 +1,8 @@
-package com.alkesh.scoreboard.core.network.interceptors
+package com.alkesh.scoreboard.dataSources.network.interceptors
 
 import android.content.Context
 import android.net.ConnectivityManager
-import com.alkesh.scoreboard.core.network.exception.NoConnectivityException
+import com.alkesh.scoreboard.dataSources.network.exception.NoConnectivityException
 import okhttp3.Interceptor
 import okhttp3.Response
 

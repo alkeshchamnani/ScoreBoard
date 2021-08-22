@@ -1,6 +1,6 @@
-package com.alkesh.scoreboard.core.network.services
+package com.alkesh.scoreboard.dataSources.network.services
 
-import com.alkesh.scoreboard.core.network.models.dto.GameResultDTO
+import com.alkesh.scoreboard.dataSources.network.models.dto.GameResultDTO
 import retrofit2.Response
 import retrofit2.http.GET
 

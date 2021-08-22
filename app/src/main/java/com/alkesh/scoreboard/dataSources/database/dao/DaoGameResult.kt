@@ -1,10 +1,10 @@
-package com.alkesh.scoreboard.core.database.dao
+package com.alkesh.scoreboard.dataSources.database.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.alkesh.scoreboard.core.database.entity.DbGameResult
+import com.alkesh.scoreboard.dataSources.database.entity.DbGameResult
 
 @Dao
 interface DaoGameResult {

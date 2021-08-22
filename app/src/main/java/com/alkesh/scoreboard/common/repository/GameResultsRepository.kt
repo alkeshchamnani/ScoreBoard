@@ -2,9 +2,6 @@ package com.alkesh.scoreboard.common.repository
 
 import com.alkesh.scoreboard.common.base.repository.BaseRepository
 import com.alkesh.scoreboard.common.uiModels.UIGameResultModel
-import com.alkesh.scoreboard.core.database.dao.DaoGameResult
-import com.alkesh.scoreboard.core.mapper.GameResultsMapper
-import com.alkesh.scoreboard.core.network.services.GameResultsService
 import javax.inject.Inject
 
 

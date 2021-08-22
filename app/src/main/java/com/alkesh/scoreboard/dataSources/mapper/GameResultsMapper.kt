@@ -1,11 +1,11 @@
-package com.alkesh.scoreboard.core.mapper
+package com.alkesh.scoreboard.dataSources.mapper
 
 import com.alkesh.scoreboard.common.uiModels.UIGameResultModel
-import com.alkesh.scoreboard.core.database.entity.DbGameResult
-import com.alkesh.scoreboard.core.network.models.dto.GameResultDTO
+import com.alkesh.scoreboard.dataSources.database.entity.DbGameResult
+import com.alkesh.scoreboard.dataSources.network.models.dto.GameResultDTO
 import javax.inject.Inject
 
-class GameResultsMapper  {
+class GameResultsMapper {
     fun convertDtoIntoUIModel(dto: GameResultDTO?): UIGameResultModel? {
         var uiModel: UIGameResultModel? = null
 

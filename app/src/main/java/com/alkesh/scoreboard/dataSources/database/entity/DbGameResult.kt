@@ -1,12 +1,13 @@
-package com.alkesh.scoreboard.core.database.entity
+package com.alkesh.scoreboard.dataSources.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "result")
+@Entity(tableName = "Result")
 data class DbGameResult(
-    @PrimaryKey(autoGenerate = true) val id: Int? = 0,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int?=null,
     @ColumnInfo(name = "teamA") val teamA: String,
     @ColumnInfo(name = "teamB") val teamB: String,
     @ColumnInfo(name = "score") val score: String,
@@ -16,4 +17,6 @@ data class DbGameResult(
     @ColumnInfo(name = "date") val date: String,
     @ColumnInfo(name = "apiSource") val apiSource: String
 
-)
+) {
+
+}

@@ -1,4 +1,4 @@
-package com.alkesh.scoreboard.core.network.exception
+package com.alkesh.scoreboard.dataSources.network.exception
 
 import java.io.IOException
 

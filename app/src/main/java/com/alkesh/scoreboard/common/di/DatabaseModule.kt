@@ -2,8 +2,8 @@ package com.alkesh.scoreboard.common.di
 
 import android.content.Context
 import androidx.room.Room
-import com.alkesh.scoreboard.core.database.dao.DaoGameResult
-import com.alkesh.scoreboard.core.database.db.AppDatabase
+import com.alkesh.scoreboard.dataSources.database.dao.DaoGameResult
+import com.alkesh.scoreboard.dataSources.database.db.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,11 +14,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 class DatabaseModule {
-/*    @Provides
-    fun provideDaoGameResult(appDatabase: AppDatabase): DaoGameResult {
-        return appDatabase.quoteDao()
-    }
-
     @Provides
     @Singleton
     fun provideAppDatabase(@ApplicationContext appContext: Context): AppDatabase {
@@ -27,5 +22,13 @@ class DatabaseModule {
             AppDatabase::class.java,
             "Game"
         ).build()
-    }*/
+    }
+
+    @Singleton
+    @Provides
+    fun provideDaoGameResult(appDatabase: AppDatabase): DaoGameResult {
+        return appDatabase.quoteDao()
+    }
+
+
 }

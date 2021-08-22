@@ -1,4 +1,4 @@
-package com.alkesh.scoreboard.core.network.models.dto;
+package com.alkesh.scoreboard.dataSources.network.models.dto;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
