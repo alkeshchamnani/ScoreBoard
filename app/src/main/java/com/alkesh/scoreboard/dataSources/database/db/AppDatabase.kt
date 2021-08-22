@@ -7,5 +7,6 @@ import com.alkesh.scoreboard.dataSources.database.entity.DbGameResult
 
 @Database(entities = [DbGameResult::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
+
     abstract fun quoteDao(): DaoGameResult
 }
