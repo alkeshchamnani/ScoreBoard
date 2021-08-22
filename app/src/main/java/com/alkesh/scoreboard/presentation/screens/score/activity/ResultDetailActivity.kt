@@ -4,7 +4,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.alkesh.scoreboard.R
 import com.alkesh.scoreboard.common.base.activity.AppBaseActivity
-import com.alkesh.scoreboard.common.models.dto.GameResultModel
+import com.alkesh.scoreboard.common.uiModels.UIGameResultModel
 import com.alkesh.scoreboard.common.util.DateAndTimeUtil
 import com.alkesh.scoreboard.common.util.DateFormats
 import com.alkesh.scoreboard.common.util.ImageUtil
@@ -59,30 +59,30 @@ class ResultDetailActivity : AppBaseActivity() {
 
     private fun readDataFromBundle() {
         val ob = intent.getSerializableExtra(ResultDetailConstant.Bundle_Result_Model)
-        if (ob is GameResultModel) {
+        if (ob is UIGameResultModel) {
             viewModel.setResults(ob)
         }
     }
 
-    private fun populateGameResult(model: GameResultModel) {
-        model.score?.let {
+    private fun populateGameResult(uiGameResultModel: UIGameResultModel) {
+        uiGameResultModel.score?.let {
             val arrayScore = it.split("-")
             tvTeamAScore.text = arrayScore[0]
             tvTeamBScore.text = arrayScore[1]
         }
-        model.teamA?.let {
+        uiGameResultModel.teamA?.let {
             tvTeamAName.text = NameUtil.getShortName(it)
         }
-        model.teamB?.let {
+        uiGameResultModel.teamB?.let {
             tvTeamBName.text = NameUtil.getShortName(it)
         }
-        model.linkA?.let {
-            ImageUtil.loadImage(ivTeamAFlag.context, ivTeamAFlag, it)
+        uiGameResultModel.linkA?.let {
+           // ImageUtil.loadImage(ivTeamAFlag, it)
         }
-        model.linkB?.let {
-            ImageUtil.loadImage(ivTeamBFlag.context, ivTeamBFlag, it)
+        uiGameResultModel.linkB?.let {
+           // ImageUtil.loadImage(ivTeamBFlag, it)
         }
-        model.date?.let {
+        uiGameResultModel.date?.let {
             try {
                 val calendar = DateAndTimeUtil.getCalendar(it, DateFormats.Server_Date_Format)
                 val date = DateAndTimeUtil.formatCalender(calendar, DateFormats.UIDateFormat)

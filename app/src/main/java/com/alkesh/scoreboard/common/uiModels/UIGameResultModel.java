@@ -1,29 +1,28 @@
-package com.alkesh.scoreboard.common.models.dto;
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+package com.alkesh.scoreboard.common.uiModels;
 
 import java.io.Serializable;
 
-public class GameResultModel implements Serializable {
-    @SerializedName("Team_A")
-    @Expose
+public class UIGameResultModel implements Serializable {
+
     private String teamA;
-    @SerializedName("Team_B")
-    @Expose
     private String teamB;
-    @SerializedName("Score")
-    @Expose
     private String score;
-    @SerializedName("link_A")
-    @Expose
     private String linkA;
-    @SerializedName("link_B")
-    @Expose
     private String linkB;
-    @SerializedName("Date")
-    @Expose
     private String date;
+
+    public UIGameResultModel(String teamA, String teamB, String score, String linkA, String linkB, String date) {
+        this.teamA = teamA;
+        this.teamB = teamB;
+        this.score = score;
+        this.linkA = linkA;
+        this.linkB = linkB;
+        this.date = date;
+    }
+
+    public UIGameResultModel() {
+
+    }
 
     public String getTeamA() {
         return teamA;
@@ -72,5 +71,7 @@ public class GameResultModel implements Serializable {
     public void setDate(String date) {
         this.date = date;
     }
+
+
 
 }

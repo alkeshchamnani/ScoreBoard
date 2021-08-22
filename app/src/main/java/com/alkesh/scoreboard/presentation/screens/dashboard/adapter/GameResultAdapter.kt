@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.alkesh.scoreboard.R
-import com.alkesh.scoreboard.common.models.dto.GameResultModel
+import com.alkesh.scoreboard.common.uiModels.UIGameResultModel
 import com.alkesh.scoreboard.common.util.DateAndTimeUtil
 import com.alkesh.scoreboard.common.util.DateFormats
 import com.alkesh.scoreboard.common.util.ImageUtil
@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.cell_list_game_result.view.*
 
 class GameResultAdapter(
     private val context: Context,
-    private val list: ArrayList<GameResultModel>,
+    private val list: ArrayList<UIGameResultModel>,
     private val onResultSelected: OnResultSelected
 ) : RecyclerView.Adapter<GameResultAdapter.ViewHolder>() {
 
@@ -49,10 +49,10 @@ class GameResultAdapter(
             holder.tvTeamBName.text = NameUtil.getShortName(it)
         }
         model.linkA?.let {
-            ImageUtil.loadImage(holder.ivTeamAFlag.context, holder.ivTeamAFlag, it)
+          //  ImageUtil.loadImage(holder.ivTeamAFlag, it)
         }
         model.linkB?.let {
-            ImageUtil.loadImage(holder.ivTeamBFlag.context, holder.ivTeamBFlag, it)
+           // ImageUtil.loadImage(holder.ivTeamBFlag, it)
         }
         model.date?.let {
             try {

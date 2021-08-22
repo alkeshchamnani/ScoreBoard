@@ -6,7 +6,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.alkesh.scoreboard.R
 import com.alkesh.scoreboard.common.base.activity.AppBaseActivity
-import com.alkesh.scoreboard.common.models.dto.GameResultModel
+import com.alkesh.scoreboard.common.uiModels.UIGameResultModel
 import com.alkesh.scoreboard.presentation.screens.dashboard.adapter.GameResultAdapter
 import com.alkesh.scoreboard.presentation.screens.dashboard.listener.OnResultSelected
 import com.alkesh.scoreboard.presentation.screens.dashboard.viewModel.DashboardViewModel
@@ -61,15 +61,15 @@ class DashboardActivity : AppBaseActivity() {
         return R.layout.activity_dashboard
     }
 
-    private fun populateList(list: ArrayList<GameResultModel>) {
+    private fun populateList(list: ArrayList<UIGameResultModel>) {
         val adapter = GameResultAdapter(this, list, onResultSelected)
         bindVerticalAdapterWithRecyclerview(recyclerView, adapter)
     }
 
     private val onResultSelected = object : OnResultSelected {
-        override fun onClicked(model: GameResultModel) {
+        override fun onClicked(uiGameResultModel: UIGameResultModel) {
             val intent = Intent(this@DashboardActivity, ResultDetailActivity::class.java)
-            intent.putExtra(ResultDetailConstant.Bundle_Result_Model, model)
+            intent.putExtra(ResultDetailConstant.Bundle_Result_Model, uiGameResultModel)
             startAnotherActivity(intent)
         }
     }

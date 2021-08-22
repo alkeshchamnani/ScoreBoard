@@ -1,49 +1,100 @@
 package com.alkesh.scoreboard.common.repository
 
 import com.alkesh.scoreboard.common.base.repository.BaseRepository
-import com.alkesh.scoreboard.common.models.response.GetGameResultApiResponse
+import com.alkesh.scoreboard.common.uiModels.UIGameResultModel
+import com.alkesh.scoreboard.core.database.dao.DaoGameResult
+import com.alkesh.scoreboard.core.mapper.GameResultsMapper
 import com.alkesh.scoreboard.core.network.services.GameResultsService
 import javax.inject.Inject
 
 
 class GameResultsRepository @Inject constructor(
-    private val gameResultsService: GameResultsService
+   // private val gameResultsService: GameResultsService,
+   // private val daoGameResult: DaoGameResult,
+    //private val gameResultsMapper: GameResultsMapper
 ) : BaseRepository() {
 
-    suspend fun getResultFromA(): GetGameResultApiResponse? {
-        val model =
-            GetGameResultApiResponse()
-        try {
+    suspend fun getResultFromA(): ArrayList<UIGameResultModel>? {
+        val list = ArrayList<UIGameResultModel>()
+        /*try {
             val response = gameResultsService.getResultsFromA()
             if (response.isSuccessful) {
-                model.listScores = response.body()
-                model.successful = true
+                daoGameResult.deleteAll(APISource.APIA.value)
+                val result = response.body()
+                result?.let {
+                    for (dto in it) {
+                        val uiModel = gameResultsMapper.convertDtoIntoUIModel(dto)
+                        uiModel?.let {
+                            list.add(it)
+                        }
+                        val dbModel =
+                            gameResultsMapper.convertDtoIntoDbModel(dto, APISource.APIA.value)
+                        daoGameResult.insertAll(dbModel)
+                    }
+                }
+            } else {
+                val listDBModels = daoGameResult.getAll(APISource.APIA.value)
+                for (dbModel in listDBModels) {
+                    val uiModel = gameResultsMapper.convertDbModelIntoUIModel(dbModel)
+                    uiModel?.let {
+                        list.add(it)
+                    }
+                }
             }
         } catch (exp: Exception) {
-            model.let {
-                it.successful = false
-                it.message = exp.message
+            val listDBModels = daoGameResult.getAll(APISource.APIA.value)
+            for (dbModel in listDBModels) {
+                val uiModel = gameResultsMapper.convertDbModelIntoUIModel(dbModel)
+                uiModel?.let {
+                    list.add(it)
+                }
             }
-        }
-        return model
+        }*/
+        return list
     }
 
-    suspend fun getResultFromB(): GetGameResultApiResponse? {
-        val model =
-            GetGameResultApiResponse()
-        try {
+    suspend fun getResultFromB(): ArrayList<UIGameResultModel>? {
+        val list = ArrayList<UIGameResultModel>()
+       /* try {
             val response = gameResultsService.getResultsFromB()
             if (response.isSuccessful) {
-                model.listScores = response.body()
-                model.successful = true
+                daoGameResult.deleteAll(APISource.APIB.value)
+                val result = response.body()
+                result?.let {
+                    for (dto in it) {
+                        val uiModel = gameResultsMapper.convertDtoIntoUIModel(dto)
+                        uiModel?.let {
+                            list.add(it)
+                        }
+                        val dbModel =
+                            gameResultsMapper.convertDtoIntoDbModel(dto, APISource.APIB.value)
+                        daoGameResult.insertAll(dbModel)
+                    }
+                }
+            } else {
+                val listDBModels = daoGameResult.getAll(APISource.APIB.value)
+                for (dbModel in listDBModels) {
+                    val uiModel = gameResultsMapper.convertDbModelIntoUIModel(dbModel)
+                    uiModel?.let {
+                        list.add(it)
+                    }
+                }
             }
         } catch (exp: Exception) {
-            model.let {
-                it.successful = false
-                it.message = exp.message
+            val listDBModels = daoGameResult.getAll(APISource.APIB.value)
+            for (dbModel in listDBModels) {
+                val uiModel = gameResultsMapper.convertDbModelIntoUIModel(dbModel)
+                uiModel?.let {
+                    list.add(it)
+                }
             }
-        }
-        return model
+        }*/
+        return list
     }
 
+
+    enum class APISource(var value: String) {
+        APIA("APIA"),
+        APIB("APIB")
+    }
 }
