@@ -22,6 +22,7 @@ Kotlin programming language was used for the development<br/>
 The MVVM architecture desgin patter was used for the development<br/>
 Android's Architecture Components components were used to to acheive MVVM e.g LiveData, AndroidViewModel<br/>
 Kotlins Coroutines were used asynchronous programming. <br/>
+Android Data Binding is used to bind xml<br/>
 
 Hilt is for Injecting Repositories into viewModel<br/>
 Retrofit was used for Networking along with OkHttp<br/>
