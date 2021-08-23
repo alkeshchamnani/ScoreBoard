@@ -9,6 +9,7 @@ import com.alkesh.scoreboard.common.util.DateAndTimeUtil
 import com.alkesh.scoreboard.common.util.DateFormats
 import com.alkesh.scoreboard.common.util.ImageUtil
 import com.alkesh.scoreboard.common.util.NameUtil
+import com.alkesh.scoreboard.databinding.ActivityResultDetailBinding
 import com.alkesh.scoreboard.presentation.screens.score.constant.ResultDetailConstant
 import com.alkesh.scoreboard.presentation.screens.score.viewModel.ResultDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,9 +17,9 @@ import kotlinx.android.synthetic.main.cell_list_game_result.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
 @AndroidEntryPoint
-class ResultDetailActivity : AppBaseActivity() {
+class ResultDetailActivity : AppBaseActivity<ActivityResultDetailBinding>() {
     private val viewModel: ResultDetailViewModel by viewModels()
-
+    private lateinit var dataBinding: ActivityResultDetailBinding
     override fun init() {
         toolbar.setup(this, getString(R.string.activity_result_detail_title), true)
     }
@@ -65,16 +66,17 @@ class ResultDetailActivity : AppBaseActivity() {
     }
 
     private fun populateGameResult(uiGameResultModel: UIGameResultModel) {
+
         uiGameResultModel.score?.let {
             val arrayScore = it.split("-")
-            tvTeamAScore.text = arrayScore[0]
-            tvTeamBScore.text = arrayScore[1]
+            dataBinding.teamAScore = arrayScore[0]
+            dataBinding.teamBScore = arrayScore[1]
         }
         uiGameResultModel.teamA?.let {
-            tvTeamAName.text = NameUtil.getShortName(it)
+            dataBinding.teamAName = NameUtil.getShortName(it)
         }
         uiGameResultModel.teamB?.let {
-            tvTeamBName.text = NameUtil.getShortName(it)
+            dataBinding.teamBName = NameUtil.getShortName(it)
         }
         uiGameResultModel.linkA?.let {
             ImageUtil.loadImage(ivTeamAFlag.context, ivTeamAFlag, it)
@@ -87,12 +89,17 @@ class ResultDetailActivity : AppBaseActivity() {
                 val calendar = DateAndTimeUtil.getCalendar(it, DateFormats.Server_Date_Format)
                 val date = DateAndTimeUtil.formatCalender(calendar, DateFormats.UIDateFormat)
                 val time = DateAndTimeUtil.formatCalender(calendar, DateFormats.UITimeFormat)
-                tvDate.text = date
-                tvTime.text = time
+                dataBinding.resultDate = date
+                dataBinding.resultTime = time
+
             } catch (exp: Exception) {
-                tvDate.text = "N/A"
-                tvTime.text = "N/A"
+                dataBinding.resultDate = "N/A"
+                dataBinding.resultTime = "N/A"
             }
         }
+    }
+
+    override fun dataBinding(binder: ActivityResultDetailBinding) {
+        dataBinding = binder
     }
 }

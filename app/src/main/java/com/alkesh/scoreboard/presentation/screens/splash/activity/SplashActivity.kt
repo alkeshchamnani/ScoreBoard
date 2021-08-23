@@ -5,12 +5,13 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.alkesh.scoreboard.R
 import com.alkesh.scoreboard.common.base.activity.AppBaseActivity
+import com.alkesh.scoreboard.databinding.ActivitySplashBinding
 import com.alkesh.scoreboard.presentation.screens.dashboard.activity.DashboardActivity
 import com.alkesh.scoreboard.presentation.screens.splash.viewModel.SplashViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SplashActivity : AppBaseActivity() {
+class SplashActivity : AppBaseActivity<ActivitySplashBinding>() {
     private val viewModel: SplashViewModel by viewModels()
     override fun init() {
 
@@ -26,8 +27,10 @@ class SplashActivity : AppBaseActivity() {
                 finish()
             }
         })
-
     }
 
     override fun getLayoutResId() = R.layout.activity_splash
+    override fun dataBinding(dataBinder: ActivitySplashBinding) {
+        
+    }
 }

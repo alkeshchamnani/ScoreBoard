@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import com.alkesh.scoreboard.R
 import com.alkesh.scoreboard.common.base.activity.AppBaseActivity
 import com.alkesh.scoreboard.common.uiModels.UIGameResultModel
+import com.alkesh.scoreboard.databinding.ActivityDashboardBinding
 import com.alkesh.scoreboard.presentation.screens.dashboard.adapter.GameResultAdapter
 import com.alkesh.scoreboard.presentation.screens.dashboard.listener.OnResultSelected
 import com.alkesh.scoreboard.presentation.screens.dashboard.viewModel.DashboardViewModel
@@ -17,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
 @AndroidEntryPoint
-class DashboardActivity : AppBaseActivity() {
+class DashboardActivity : AppBaseActivity<ActivityDashboardBinding>() {
     private val viewModel: DashboardViewModel by viewModels()
     override fun init() {
         toolbar.setup(this, getString(R.string.activity_dashboard_title), false)
@@ -72,5 +73,9 @@ class DashboardActivity : AppBaseActivity() {
             intent.putExtra(ResultDetailConstant.Bundle_Result_Model, uiGameResultModel)
             startAnotherActivity(intent)
         }
+    }
+
+    override fun dataBinding(dataBinder: ActivityDashboardBinding) {
+
     }
 }

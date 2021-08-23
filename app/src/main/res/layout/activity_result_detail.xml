@@ -1,24 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/layoutBackgroundColor1"
-    tools:context=".presentation.screens.splash.activity.SplashActivity">
 
-    <include
-        layout="@layout/layout_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
 
-    <ScrollView
+    <data>
+
+        <variable
+            name="teamAScore"
+            type="String" />
+
+        <variable
+            name="teamBScore"
+            type="String" />
+
+        <variable
+            name="teamAName"
+            type="String" />
+
+        <variable
+            name="teamBName"
+            type="String" />
+
+        <variable
+            name="resultDate"
+            type="String" />
+
+        <variable
+            name="resultTime"
+            type="String" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/app_bar"
-        android:fillViewport="true">
+        android:background="@color/layoutBackgroundColor1"
+        tools:context=".presentation.screens.score.activity.ResultDetailActivity">
 
-        <include layout="@layout/cell_list_game_result" />
+        <include
+            layout="@layout/layout_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    </ScrollView>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/app_bar"
+            android:fillViewport="true">
 
-</RelativeLayout>
+            <include
+                layout="@layout/cell_list_game_result"
+                bind:resultDate="@{resultDate}"
+                bind:resultTime="@{resultTime}"
+
+                bind:teamAName="@{teamAName}"
+                bind:teamAScore="@{teamAScore}"
+
+                bind:teamBName="@{teamBName}"
+                bind:teamBScore="@{teamBScore}"
+
+                />
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</layout>

@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
 import android.view.View.OnClickListener
+import androidx.appcompat.app.AppCompatActivity
 import com.alkesh.scoreboard.R
 import com.alkesh.scoreboard.common.base.activity.AppBaseActivity
 import com.alkesh.scoreboard.common.base.component.BaseComponentBaseRelativeLayout
@@ -56,7 +57,7 @@ class BaseToolbar : BaseComponentBaseRelativeLayout {
     }
 
 
-    fun setup(activity: AppBaseActivity, title: String, enableBack: Boolean) {
+    fun setup(activity: AppCompatActivity, title: String, enableBack: Boolean) {
         toolbarStartIV.visibility = View.INVISIBLE
         toolbarEndIv.visibility = View.INVISIBLE
 

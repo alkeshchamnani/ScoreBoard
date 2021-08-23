@@ -7,16 +7,21 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alkesh.scoreboard.R
 
 
-abstract class AppBaseActivity() : AppCompatActivity() {
+abstract class AppBaseActivity<in T>() : AppCompatActivity() where T : ViewDataBinding {
     private var loadingDialog: Dialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(getLayoutResId())
+        //setContentView(getLayoutResId())
+        val dataBinder = DataBindingUtil.setContentView<T>(this@AppBaseActivity, getLayoutResId())
+        this@AppBaseActivity.dataBinding(dataBinder)
+
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
         init()
@@ -69,4 +74,6 @@ abstract class AppBaseActivity() : AppCompatActivity() {
     protected abstract fun setEvents()
     protected abstract fun setObservers()
     protected abstract fun getLayoutResId(): Int
+    protected abstract fun dataBinding(dataBinder: T)
+
 }

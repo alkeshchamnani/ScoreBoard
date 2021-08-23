@@ -79,7 +79,7 @@ class GameResultsRepository @Inject constructor(
         }
         return list
     }
-    
+
     enum class APISource(var value: String) {
         APIA("APIA"),
         APIB("APIB")
